@@ -46,3 +46,33 @@ promise2.then((result)=>{
 },(reason)=>{
     console.log("promise2中的数据:",reason);//promise2中的数据: 石之自由
 });
+
+// Promise维护了两个隐藏属性
+// 1.PromiseResult:用来存储数据
+// 2.PromiseState:用来记录Promise状态,State只能修改一次,之后永不变化
+//      3种状态:
+//      fulfilled:完成 通过resolve存储数据时
+//      rejected:拒绝  出错或通过reject存储数据时
+//      pending:进行中
+
+// 流程
+// 当Promise创建时,PromiseState初始值为pending
+// 通过resolve存储数据时-->fulfilled PromiseResult变为存储的数据
+// 通过reject存储数据或出错时-->rejected PromiseResult变为存储的数据或异常对象
+// 当我们通过then读取数据时,相当于为Promise设置了回调函数,
+// 若PromiseState变为fulfilled,则调用then的第一个回调函数返回数据
+// 若PromiseState变为rejected,则调用then的第二个回调函数返回数据
+
+
+// catch()用法和then()类似,但只需要一个参数
+// catch()中的回调函数只会在Promise被拒绝时才调用
+// catch()相当于then(null,reason=>{})即一个专门处理Promise异常的方法
+promise2.catch(reason=>{
+    console.log("catch");
+})
+
+// finally()无论是正常还是其他,总会执行
+// 但是finally()中不会接受到数据,通常用来编写成功与否关系不大的代码
+promise2.finally(()=>{
+    console.log("finally");//finally
+})
