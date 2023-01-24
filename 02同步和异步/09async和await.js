@@ -68,3 +68,6 @@ async function fn5(){
 fn5();
 console.log(4);
 // 1 2 4 3
+(async ()=>{
+    await console.log('hhh');
+})()
