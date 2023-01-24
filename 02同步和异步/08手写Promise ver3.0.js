@@ -35,7 +35,7 @@ class MyPromise {
         }
         else { return; }
     }
-    then(onFulfilled, onRejected) {
+    then(onFulfilled, onRejected) { 
         return new MyPromise((resolve,reject)=>{
             if (this.#state === PROMISE_STATE.PENDING) {
                 queueMicrotask(() => {
