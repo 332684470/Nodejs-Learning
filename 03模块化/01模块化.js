@@ -17,3 +17,13 @@ console.log(module.exports);//{}
 console.log(exports===module.exports);//true
 // 当我们在其他模块中引入当前模块时,require返回的就是exports
 // 可以将希望暴露的内容设置为exports的属性
+// 可以通过exports.属性名一个一个导出
+// 也可以通过module.exports同时导出多个值
+
+// 引入自定义模块 require("模块路径")可省略后缀优先js>json>node(特殊)
+// 引入核心模块 直接写核心模块的名字即可
+const path=require('path');
+console.log(path);
+// {resolve: ƒ, normalize: ƒ, isAbsolute: ƒ, join: ƒ, relative: ƒ, …}
+// 或
+// path=require('node:path');
